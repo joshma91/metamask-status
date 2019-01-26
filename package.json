@@ -19,7 +19,10 @@
     "test:coverage": "nwb test-react --coverage",
     "test:watch": "nwb test-react --server"
   },
-  "dependencies": {},
+  "dependencies": {
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.84.0"
+  },
   "peerDependencies": {
     "react": "16.x"
   },
