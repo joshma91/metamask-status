@@ -3,13 +3,17 @@ import {render} from 'react-dom'
 import "semantic-ui-css/semantic.min.css";
 import MetamaskModal from './components/MetamaskModal'
 import metamask from "./static/metamask.png"
+import DefaultTheme from "./defaultTheme"
 
 export default class MetamaskStatus extends React.Component {
+  state = {
+    theme: DefaultTheme
+  }
   renderWelcome = () => {
     const { accounts, contract } = this.props;
 
     if (contract == undefined) {
-      return <MetamaskModal />;
+      return <MetamaskModal theme={this.state.theme}/>;
     } else if (accounts && accounts.length == 0) {
       return (
         <div>
@@ -34,7 +38,7 @@ export default class MetamaskStatus extends React.Component {
   render() {
     return (
       <div>
-            {this.renderWelcome()}
+        {this.renderWelcome()}
       </div>
     );
   }

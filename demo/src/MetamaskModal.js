@@ -1,28 +1,26 @@
 import React from 'react'
-import metamask from "../static/metamask.png"
-import Button from "./Button"
 import {
   Container,
   Image,
+  Button,
   Menu,
   Segment,
   Header,
   Modal,
   Grid
 } from "semantic-ui-react";
+import metamask from "../../src/static/metamask.png"
 
-
-export const MetamaskModal = ({theme}) => (
+export const MetamaskModal = () => (
   <div>
-    {console.log(theme)}
-  <div style={{paddingBottom:"8px", fontWeight:"bold", paddingLeft:"20px"}}>Running on Ropsten Testnet</div>
+  <div style={{paddingBottom:"8px", fontWeight:"bold", paddingLeft:"20px"}}>This is the old one</div>
   <Modal
     basic
     size={"tiny"}
     trigger={
-      <Button theme={theme}>
+      <Button className="metaBtn">
         Get Metamask{" "}
-        <image style={{ display: "inline-block" }} src={metamask} />
+        <Image style={{ display: "inline-block" }} src={metamask} />
       </Button>
     }
   >
