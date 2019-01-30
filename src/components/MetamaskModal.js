@@ -22,7 +22,7 @@ export const MetamaskModal = ({theme}) => (
     trigger={
       <Button theme={theme}>
         Get Metamask{" "}
-        <image style={{ display: "inline-block" }} src={metamask} />
+        <img style={{ display: "inline-block" }} src={metamask} />
       </Button>
     }
   >
