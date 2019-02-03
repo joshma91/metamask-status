@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {render} from 'react-dom'
 import "semantic-ui-css/semantic.min.css";
-import MetamaskModal from './components/MetamaskModal'
+import Modal from './components/Modal'
 import metamask from "./static/metamask.png"
 import DefaultTheme from "./defaultTheme"
 
@@ -13,7 +13,7 @@ export default class MetamaskStatus extends React.Component {
     const { accounts, contract } = this.props;
 
     if (contract == undefined) {
-      return <MetamaskModal theme={this.state.theme}/>;
+      return <Modal theme={this.state.theme}/>;
     } else if (accounts && accounts.length == 0) {
       return (
         <div>
