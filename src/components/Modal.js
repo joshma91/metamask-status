@@ -8,17 +8,38 @@ export default class Modal extends React.Component {
     visible: false
   };
 
+  componentDidMount = () => {
+    window.addEventListener("click", this.handleOutsideClick);
+  };
+
   onButtonClick = () => {
     this.setState({ visible: true });
+  };
+
+  handleOutsideClick = e => {
+    const { visible } = this.state;
+    if (
+      visible &&
+      this.wrapperRef &&
+      !this.wrapperRef.contains(e.target) &&
+      !this.buttonRef.contains(e.target)
+    ) {
+      this.setState({ visible: false });
+    }
+  };
+
+  setWrapperRef = node => {
+    this.wrapperRef = node;
+  };
+  setButtonRef = node => {
+    this.buttonRef = node;
   };
 
   render() {
     const { theme } = this.props;
     const { visible } = this.state;
-    console.log("visibility", visible)
     return (
       <div>
-        {console.log(this.props.theme)}
         <div
           style={{
             paddingBottom: "8px",
@@ -28,13 +49,17 @@ export default class Modal extends React.Component {
         >
           Running on Ropsten Testnet
         </div>
-        <Button theme={theme} onClick={() => this.onButtonClick()}>
+        <Button
+          ref={this.setButtonRef}
+          theme={theme}
+          onClick={() => this.onButtonClick()}
+        >
           Get Metamask{" "}
           <img style={{ display: "inline-block" }} src={metamask} />
         </Button>
 
         <ModalContainer visible={visible}>
-          <div class="modal-content">
+          <div ref={this.setWrapperRef} class="modal-content">
             <div class="modal-header">
               <span class="close">&times;</span>
               <h2>Welcome! Let's get you set up with MetaMask</h2>
