@@ -2,6 +2,9 @@ import React from "react";
 import metamask from "../static/metamask.png";
 import Button from "./Button";
 import ModalContainer from "./ModalContainer";
+import ModalContent from "./ModalContent"
+import ModalHeader from "./ModalHeader"
+import ModalBody from "./ModalBody"
 
 export default class Modal extends React.Component {
   state = {
@@ -59,17 +62,16 @@ export default class Modal extends React.Component {
         </Button>
 
         <ModalContainer visible={visible}>
-          <div ref={this.setWrapperRef} class="modal-content">
-            <div class="modal-header">
-              <span class="close">&times;</span>
-              <h2>Welcome! Let's get you set up with MetaMask</h2>
-            </div>
-            <div class="modal-body">
-              <p>Install and Setup MetaMask</p>
-              <p>Unlock your MetaMask</p>
-              <p>Connect to the Ropsten Ethereum network</p>
-            </div>
-          </div>
+          <ModalContent ref={this.setWrapperRef} class="modal-content">
+
+              <ModalHeader theme={theme}>Welcome! Let's get you set up with MetaMask</ModalHeader>
+
+            <ModalBody theme={theme}>
+              <h2>Install and Setup MetaMask</h2>
+              <h2>Unlock your MetaMask</h2>
+              <h2>Connect to the Ropsten Ethereum network</h2>
+            </ModalBody>
+          </ModalContent>
         </ModalContainer>
         <div />
       </div>
