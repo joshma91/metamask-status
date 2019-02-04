@@ -2,9 +2,11 @@ import React from "react";
 import metamask from "../static/metamask.png";
 import Button from "./Button";
 import ModalContainer from "./ModalContainer";
-import ModalContent from "./ModalContent"
-import ModalHeader from "./ModalHeader"
-import ModalBody from "./ModalBody"
+import ModalContent from "./ModalContent";
+import ModalHeader from "./ModalHeader";
+import ModalBody from "./ModalBody";
+import Checkbox from "./Checkbox";
+import StyledH2 from "./StyledH2"
 
 export default class Modal extends React.Component {
   state = {
@@ -63,13 +65,18 @@ export default class Modal extends React.Component {
 
         <ModalContainer visible={visible}>
           <ModalContent ref={this.setWrapperRef} class="modal-content">
-
-              <ModalHeader theme={theme}>Welcome! Let's get you set up with MetaMask</ModalHeader>
+            <ModalHeader theme={theme}>
+              Welcome! Let's get you set up with MetaMask
+            </ModalHeader>
 
             <ModalBody theme={theme}>
-              <h2>Install and Setup MetaMask</h2>
-              <h2>Unlock your MetaMask</h2>
-              <h2>Connect to the Ropsten Ethereum network</h2>
+              <div style={{paddingBottom:"30px"}}>
+              <Checkbox>
+                <img style={{ padding: "2px", height:"20px", display: "inline-block" }} src={metamask} />
+              </Checkbox>
+              <StyledH2>Install and Setup MetaMask</StyledH2></div>
+              <div style={{paddingBottom:"30px"}}><Checkbox/><StyledH2>Unlock your MetaMask</StyledH2></div>
+              <div style={{paddingBottom:"30px"}}><Checkbox/><StyledH2>Connect to the Ropsten Ethereum network</StyledH2></div>
             </ModalBody>
           </ModalContent>
         </ModalContainer>
