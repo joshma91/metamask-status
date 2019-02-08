@@ -6,7 +6,8 @@ import ModalContent from "./ModalContent";
 import ModalHeader from "./ModalHeader";
 import ModalBody from "./ModalBody";
 import Checkbox from "./Checkbox";
-import StyledH2 from "./StyledH2"
+import StyledH2 from "./StyledH2";
+import MetamaskImage from "./MetamaskImage"
 
 export default class Modal extends React.Component {
   state = {
@@ -72,7 +73,7 @@ export default class Modal extends React.Component {
             <ModalBody theme={theme}>
               <div style={{paddingBottom:"30px"}}>
               <Checkbox>
-                <img style={{ padding: "2px", height:"20px", display: "inline-block" }} src={metamask} />
+                <MetamaskImage src={metamask} />
               </Checkbox>
               <StyledH2>Install and Setup MetaMask</StyledH2></div>
               <div style={{paddingBottom:"30px"}}><Checkbox/><StyledH2>Unlock your MetaMask</StyledH2></div>
