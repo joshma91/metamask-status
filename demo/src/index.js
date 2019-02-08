@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
-
+import web3 from "./getWeb3";
 import MetamaskStatus from "../../src/MetamaskStatus";
 import MetamaskModal from "./MetamaskModal"
 import DefaultTheme from "../../src/defaultTheme"
@@ -32,7 +32,7 @@ class Demo extends Component {
   render() {
     return (
       <div>
-        <MetamaskStatus />
+        <MetamaskStatus web3={web3}/>
         <div>{this.renderWelcome()}</div>
       </div>
     );

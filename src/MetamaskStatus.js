@@ -10,10 +10,10 @@ export default class MetamaskStatus extends React.Component {
     theme: DefaultTheme
   }
   renderWelcome = () => {
-    const { accounts, contract } = this.props;
+    const { web3, accounts, contract } = this.props;
 
     if (contract == undefined) {
-      return <Modal theme={this.state.theme}/>;
+      return <Modal web3={web3} theme={this.state.theme}/>;
     } else if (accounts && accounts.length == 0) {
       return (
         <div>

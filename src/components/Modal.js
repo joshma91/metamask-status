@@ -42,8 +42,9 @@ export default class Modal extends React.Component {
   };
 
   render() {
-    const { theme } = this.props;
+    const { web3, theme } = this.props;
     const { visible } = this.state;
+    console.log(web3)
     return (
       <div>
         <div
@@ -65,7 +66,7 @@ export default class Modal extends React.Component {
         </Button>
 
         <ModalContainer visible={visible}>
-          <ModalContent ref={this.setWrapperRef} class="modal-content">
+          <ModalContent ref={this.setWrapperRef} >
             <ModalHeader theme={theme}>
               Welcome! Let's get you set up with MetaMask
             </ModalHeader>
@@ -73,7 +74,7 @@ export default class Modal extends React.Component {
             <ModalBody theme={theme}>
               <div style={{paddingBottom:"30px"}}>
               <Checkbox>
-                <MetamaskImage src={metamask} />
+                {web3 ? <MetamaskImage src={metamask} /> : null}
               </Checkbox>
               <StyledH2>Install and Setup MetaMask</StyledH2></div>
               <div style={{paddingBottom:"30px"}}><Checkbox/><StyledH2>Unlock your MetaMask</StyledH2></div>
