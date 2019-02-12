@@ -11,11 +11,15 @@ import MetamaskImage from "./MetamaskImage"
 
 export default class Modal extends React.Component {
   state = {
+    accounts: null,
     visible: false
   };
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
+    const {web3} = this.props
     window.addEventListener("click", this.handleOutsideClick);
+    const accounts = await web3.eth.getAccounts()
+    this.setState({accounts})
   };
 
   onButtonClick = () => {
@@ -43,8 +47,10 @@ export default class Modal extends React.Component {
 
   render() {
     const { web3, theme } = this.props;
-    const { visible } = this.state;
-    console.log(web3)
+    const { visible, accounts } = this.state;
+    console.log("web3", web3)
+    console.log("accounts", accounts)
+    if(accounts === null) return null
     return (
       <div>
         <div
@@ -62,7 +68,7 @@ export default class Modal extends React.Component {
           onClick={() => this.onButtonClick()}
         >
           Get Metamask{" "}
-          <img style={{ display: "inline-block" }} src={metamask} />
+          <img style={{ verticalAlign:"middle", display: "inline-block" }} src={metamask} />
         </Button>
 
         <ModalContainer visible={visible}>
@@ -77,7 +83,9 @@ export default class Modal extends React.Component {
                 {web3 ? <MetamaskImage src={metamask} /> : null}
               </Checkbox>
               <StyledH2>Install and Setup MetaMask</StyledH2></div>
-              <div style={{paddingBottom:"30px"}}><Checkbox/><StyledH2>Unlock your MetaMask</StyledH2></div>
+              <div style={{paddingBottom:"30px"}}><Checkbox>
+              {accounts.length ? <MetamaskImage src={metamask} /> : null}
+                </Checkbox><StyledH2>Unlock your MetaMask</StyledH2></div>
               <div style={{paddingBottom:"30px"}}><Checkbox/><StyledH2>Connect to the Ropsten Ethereum network</StyledH2></div>
             </ModalBody>
           </ModalContent>
