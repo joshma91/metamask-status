@@ -82,7 +82,14 @@ export default class Modal extends React.Component {
               <Checkbox>
                 {web3 ? <MetamaskImage src={metamask} /> : null}
               </Checkbox>
-              <StyledH2>Install and Setup MetaMask</StyledH2></div>
+              <StyledH2>Install and Setup MetaMask</StyledH2>
+              <h3 style={{paddingLeft:"35px"}}>
+                Click{" "}
+                <a className="modalLink" href="https://metamask.io/">
+                  here{" "}
+                </a>
+                to install
+              </h3></div>
               <div style={{paddingBottom:"30px"}}><Checkbox>
               {accounts.length ? <MetamaskImage src={metamask} /> : null}
                 </Checkbox><StyledH2>Unlock your MetaMask</StyledH2></div>
